@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{67CEB840-05D6-47C7-8B18-7B1A3AECB66A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>borrowersignup</RootNamespace>
+    <AssemblyName>borrowersignup</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="about.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="about.Designer.cs">
+      <DependentUpon>about.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin.Designer.cs">
+      <DependentUpon>admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="all_b_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="all_b_info.Designer.cs">
+      <DependentUpon>all_b_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="all_lender_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="all_lender_info.Designer.cs">
+      <DependentUpon>all_lender_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="all_m_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="all_m_info.Designer.cs">
+      <DependentUpon>all_m_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="bankreserve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bankreserve.Designer.cs">
+      <DependentUpon>bankreserve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="borrowerRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="borrowerRegistration.Designer.cs">
+      <DependentUpon>borrowerRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="borrowerUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="borrowerUpdate.Designer.cs">
+      <DependentUpon>borrowerUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="b_dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="b_dashboard.Designer.cs">
+      <DependentUpon>b_dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="b_problem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="b_problem.Designer.cs">
+      <DependentUpon>b_problem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="edit_user_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="edit_user_info.Designer.cs">
+      <DependentUpon>edit_user_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forgetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forgetPassword.Designer.cs">
+      <DependentUpon>forgetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="helper_reg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="helper_reg.Designer.cs">
+      <DependentUpon>helper_reg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper_requests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Helper_requests.Designer.cs">
+      <DependentUpon>Helper_requests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="hepler_dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="hepler_dashboard.Designer.cs">
+      <DependentUpon>hepler_dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="howitworks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="howitworks.Designer.cs">
+      <DependentUpon>howitworks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="h_repay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="h_repay.Designer.cs">
+      <DependentUpon>h_repay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lender_dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lender_dashboard.Designer.cs">
+      <DependentUpon>lender_dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lender_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lender_info.Designer.cs">
+      <DependentUpon>lender_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lender_problem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lender_problem.Designer.cs">
+      <DependentUpon>Lender_problem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lender_update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lender_update.Designer.cs">
+      <DependentUpon>lender_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="loanrequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="loanrequest.Designer.cs">
+      <DependentUpon>loanrequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="monitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="monitor.Designer.cs">
+      <DependentUpon>monitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonitorUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MonitorUpdate.Designer.cs">
+      <DependentUpon>MonitorUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="monitor_info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="monitor_info.Designer.cs">
+      <DependentUpon>monitor_info.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Monitor_problem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Monitor_problem.Designer.cs">
+      <DependentUpon>Monitor_problem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="problems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="problems.Designer.cs">
+      <DependentUpon>problems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="process.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="process.Designer.cs">
+      <DependentUpon>process.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="repay_loan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="repay_loan.Designer.cs">
+      <DependentUpon>repay_loan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="updatepassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updatepassword.Designer.cs">
+      <DependentUpon>updatepassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdatePasswordForm.cs" />
+    <EmbeddedResource Include="about.resx">
+      <DependentUpon>about.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin.resx">
+      <DependentUpon>admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="all_b_info.resx">
+      <DependentUpon>all_b_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="all_lender_info.resx">
+      <DependentUpon>all_lender_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="all_m_info.resx">
+      <DependentUpon>all_m_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bankreserve.resx">
+      <DependentUpon>bankreserve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="borrowerRegistration.resx">
+      <DependentUpon>borrowerRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="borrowerUpdate.resx">
+      <DependentUpon>borrowerUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="b_dashboard.resx">
+      <DependentUpon>b_dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="b_problem.resx">
+      <DependentUpon>b_problem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="edit_user_info.resx">
+      <DependentUpon>edit_user_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forgetPassword.resx">
+      <DependentUpon>forgetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="helper_reg.resx">
+      <DependentUpon>helper_reg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper_requests.resx">
+      <DependentUpon>Helper_requests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hepler_dashboard.resx">
+      <DependentUpon>hepler_dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="howitworks.resx">
+      <DependentUpon>howitworks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="h_repay.resx">
+      <DependentUpon>h_repay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lender_dashboard.resx">
+      <DependentUpon>lender_dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lender_info.resx">
+      <DependentUpon>lender_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lender_problem.resx">
+      <DependentUpon>Lender_problem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lender_update.resx">
+      <DependentUpon>lender_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loanrequest.resx">
+      <DependentUpon>loanrequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="monitor.resx">
+      <DependentUpon>monitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonitorUpdate.resx">
+      <DependentUpon>MonitorUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="monitor_info.resx">
+      <DependentUpon>monitor_info.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Monitor_problem.resx">
+      <DependentUpon>Monitor_problem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="problems.resx">
+      <DependentUpon>problems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="process.resx">
+      <DependentUpon>process.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="repay_loan.resx">
+      <DependentUpon>repay_loan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updatepassword.resx">
+      <DependentUpon>updatepassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-05-18 114922.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-05-18 1149221.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-06-15 163647.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\enter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-password-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-back-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-save-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Screenshot 2025-06-25 063554.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
