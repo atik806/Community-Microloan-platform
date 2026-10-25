@@ -36,13 +36,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -63,7 +65,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(517, 50);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Note: Please give your valid email account to recover your \r\npassword.";
+            this.label4.Text = "Note: Enter the email, NID and phone number\r\nregistered on your account.";
             // 
             // panel2
             // 
@@ -108,37 +110,66 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(147, 136);
+            this.textBox1.Location = new System.Drawing.Point(147, 133);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 26);
+            this.textBox1.Size = new System.Drawing.Size(240, 26);
             this.textBox1.TabIndex = 34;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(334, 135);
+            this.button1.Location = new System.Drawing.Point(147, 256);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 29);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Search email";
+            this.button1.Size = new System.Drawing.Size(117, 32);
+            this.button1.TabIndex = 42;
+            this.button1.Text = "Verify";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(485, 128);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(303, 137);
-            this.dataGridView1.TabIndex = 36;
+            //
+            // label5
+            //
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 176);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 20);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "NID";
+            //
+            // textBox2
+            //
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(147, 173);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(240, 26);
+            this.textBox2.TabIndex = 36;
+            //
+            // label6
+            //
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 216);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 20);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "Phone";
+            //
+            // textBox3
+            //
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(147, 213);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(240, 26);
+            this.textBox3.TabIndex = 38;
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(347, 179);
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(415, 249);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 46);
-            this.button2.TabIndex = 37;
+            this.button2.TabIndex = 43;
             this.button2.Text = "Update Password";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -147,7 +178,7 @@
             // 
             this.panel3.BackgroundImage = global::borrowersignup.Properties.Resources.Screenshot_2025_06_15_163647;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(312, 188);
+            this.panel3.Location = new System.Drawing.Point(380, 258);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(29, 28);
             this.panel3.TabIndex = 38;
@@ -173,7 +204,10 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
@@ -186,7 +220,6 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,7 +235,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button3;
