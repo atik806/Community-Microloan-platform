@@ -1,74 +1,81 @@
-Community Microloan Platform
-A Community Microloan Platform that enables lenders, borrowers, and monitors to collaboratively manage microloans with a secure, user-friendly interface. This platform helps local communities provide small-scale loans with transparent tracking of loan requests, repayments, and borrower status.
+# Community Microloan Platform
 
-🚀 Features
-✅ Borrower Signup & Loan Request:
-Borrowers can register, request loans, and view remaining dues.
+A Windows Forms desktop app for running a small community microloan scheme. Borrowers
+sign up and request loans, lenders approve or reject them, monitors vet new borrowers,
+helpers register borrowers on someone else's behalf, and an admin manages every account
+and watches the shared fund.
 
-✅ Lender Dashboard:
-Lenders can approve or reject loan requests and monitor repayments.
+Built with C# (.NET Framework 4.7.2, WinForms) on SQL Server.
 
-✅ Loan Repayment Tracking:
-Real-time calculation of outstanding loan balances for each borrower.
+## Roles
 
-✅ Admin Panel:
-Admins can monitor users, approve new members, and resolve issues.
+| Role     | What they do |
+|----------|--------------|
+| Borrower | Signs up (pending until a monitor approves), requests a loan from a chosen lender, repays via bKash / Nagad / Rocket, reports problems |
+| Lender   | Accepts or rejects loan requests sent to them, reports problems |
+| Monitor  | Approves or rejects new borrower accounts and helper-submitted registrations |
+| Helper   | Registers borrowers who can't sign up themselves |
+| Admin    | Creates lenders, monitors and helpers; edits or deletes users; views reported problems and the bank reserve |
 
-✅ Secure Login System:
-Login functionality using email and password for all user types.
+## Getting started
 
-🛠️ Technologies Used
-C# (Windows Forms)
+**Requirements:** Visual Studio 2022 with the ".NET desktop development" workload, and
+SQL Server (Express is fine).
 
-SQL Server (Local Database)
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/atik806/Community-Microloan-platform.git
+   ```
+2. Restore the database: in SSMS, right-click **Databases → Import Data-tier Application**
+   and pick `database/b_info.bacpac`. Keep the database name `b_info`.
+3. Point the app at your server: edit the `b_info` connection string in
+   `src/CommunityMicroloan/App.config`. The default is `.\SQLEXPRESS` with Windows
+   authentication.
+4. Open `Community_microloan_platform.sln` and press **F5**.
 
-Git & GitHub for Version Control
+Loans accepted before the repayment fix have no outstanding balance recorded. To make
+them repayable, run this once against `b_info`:
 
-💻 Getting Started
-Prerequisites:
-Visual Studio (Recommended)
+```sql
+UPDATE LoanRequests SET due_amount = Ammount WHERE Status = 'Accepted' AND due_amount IS NULL;
+```
 
-SQL Server (Local DB)
+**Demo logins** (hard-coded for development, see `Forms/Auth/login.cs`):
+`admin@gmail.com` / `123` and `monitor@gmail.com` / `123`. Lenders, monitors and helpers
+created by the admin log in with the email and password the admin set.
 
-Git
+## Project structure
 
-Setup:
-Clone the repository:
+```
+Community_microloan_platform.sln
+database/
+  b_info.bacpac              SQL Server database export (schema + sample data)
+src/CommunityMicroloan/
+  Program.cs                 Entry point, opens the Main (landing) form
+  App.config                 Connection string lives here
+  Data/Db.cs                 Reads the connection string for every form
+  Forms/
+    Public/                  Main, about, howitworks, process
+    Auth/                    login, Form1 (borrower signup), forgetPassword, updatepassword
+    Borrower/                b_dashboard, loanrequest, repay_loan, b_problem
+    Lender/                  lender_dashboard, Lender_problem
+    Monitor/                 monitor, Monitor_problem, Helper_requests
+    Helper/                  hepler_dashboard, borrowerRegistration, h_repay
+    Admin/                   admin, user creation, edit/list/update screens, bankreserve, problems
+  Properties/                Assembly info, resources, settings
+  Resources/                 Images used by the forms
+```
 
-bash
-Copy
-Edit
-git clone https://github.com/atik806/Community-Microloan-platform.git
-Open the project .sln file in Visual Studio.
+## Known limitations
 
-Set up the database using the provided .bacpac file.
+This is a learning project and is not ready to handle real money or personal data:
 
-Configure the connection string in the code to match your SQL Server settings.
+- Passwords are stored and compared in plain text.
+- The admin and monitor demo accounts are hard-coded.
+- "Forgot password" lets anyone reset any borrower's password knowing only their email.
+- Admin edit screens show users' passwords.
+- `h_repay` (helper-assisted repayment) is a placeholder screen with no logic yet.
 
-📂 Project Structure
-bash
-Copy
-Edit
-/borrowersignup       # Main application files
-/borrowersignup.sln    # Visual Studio solution file
-/database.bacpac       # SQL database backup
-📝 Future Improvements
-Email notifications for loan approvals.
+## License
 
-Role-based dashboards for each user type.
-
-Mobile application version.
-
-🤝 Contribution
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
-📄 License
-This project is for learning and educational purposes.
-
-If you want, I can help you:
-
-Add screenshots.
-
-Write a more detailed setup guide.
-
-Generate badges (build status, license, etc.).
+For learning and educational purposes.
