@@ -72,7 +72,8 @@ This is a learning project and is not ready to handle real money or personal dat
 
 - Passwords are stored and compared in plain text.
 - The admin and monitor demo accounts are hard-coded.
-- "Forgot password" lets anyone reset any borrower's password knowing only their email.
+- "Forgot password" checks the email, NID and phone number on the account. There is no
+  email or SMS code, so anyone who knows all three can still reset that password.
 - Admin edit screens show users' passwords.
 - `h_repay` (helper-assisted repayment) is a placeholder screen with no logic yet.
 

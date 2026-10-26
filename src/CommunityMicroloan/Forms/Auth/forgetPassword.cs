@@ -1,60 +1,78 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace borrowersignup
 {
     public partial class forgetPassword : Form
     {
+        private const int MaxAttempts = 5;
+
+        private int failedAttempts;
+        private int verifiedBorrowerId = -1;
+
         public forgetPassword()
         {
             InitializeComponent();
         }
 
+        // Verify: the email alone is not proof of ownership, so the NID and phone
+        // number on the account must match too before a reset is allowed.
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            string f_email = textBox1.Text;
-            string connectionString = Db.ConnectionString;
-            string query = "SELECT f_name, Email FROM Table_b_info WHERE Email = @Email";
-            if (dataGridView1.SelectedRows.Count > 0)
-            
+            string email = textBox1.Text.Trim();
+            string nidText = textBox2.Text.Trim();
+            string phoneText = textBox3.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(nidText) || string.IsNullOrWhiteSpace(phoneText))
+            {
+                MessageBox.Show("Please enter your email, NID and phone number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int borrowerId = -1;
+
+            // nid and phone are int columns; non-numeric input simply can't match.
+            if (int.TryParse(nidText, out int nid) && int.TryParse(phoneText, out int phone))
+            {
+                string query = "SELECT borrower_id FROM Table_b_info WHERE email = @email AND nid = @nid AND phone = @phone";
+
+                using (SqlConnection connection = new SqlConnection(Db.ConnectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    MessageBox.Show("Please select you account.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@nid", nid);
+                    command.Parameters.AddWithValue("@phone", phone);
+
+                    connection.Open();
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                        borrowerId = Convert.ToInt32(result);
+                }
+            }
+
+            if (borrowerId == -1)
+            {
+                failedAttempts++;
+                if (failedAttempts >= MaxAttempts)
+                {
+                    MessageBox.Show("Too many failed attempts. Please try again later.", "Verification Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    BackToLogin();
                     return;
                 }
 
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    //string query = "SELECT * FROM Users WHERE Email = @Email";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
-                    adapter.SelectCommand.Parameters.AddWithValue("@Email", f_email);
-
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    if (dt.Rows.Count > 0)
-                    {
-                        dataGridView1.DataSource = dt;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Email not found.");
-                        dataGridView1.DataSource = null;
-                    }
-                }
+                // Same message whichever field is wrong, so the form can't be used
+                // to find out which emails are registered.
+                MessageBox.Show("Those details don't match any account.", "Verification Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            
 
-        
+            verifiedBorrowerId = borrowerId;
+            textBox1.ReadOnly = textBox2.ReadOnly = textBox3.ReadOnly = true;
+            button1.Enabled = false;
+            button2.Enabled = true;
+            MessageBox.Show("Account verified. You can now set a new password.", "Verified", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
         private void forgetPassword_Load(object sender, EventArgs e)
         {
@@ -63,24 +81,29 @@ namespace borrowersignup
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string email = textBox1.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(email))
+            if (verifiedBorrowerId == -1)
             {
-                MessageBox.Show("Please enter an email.");
+                MessageBox.Show("Please verify your account first.");
                 return;
             }
 
-            updatepassword updateForm = new updatepassword(email); 
-            updateForm.ShowDialog(); 
+            using (updatepassword updateForm = new updatepassword(verifiedBorrowerId))
+            {
+                if (updateForm.ShowDialog(this) == DialogResult.OK)
+                    BackToLogin();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            BackToLogin();
+        }
+
+        private void BackToLogin()
+        {
             login a = new login();
             a.Show();
             this.Hide();
-
         }
     }
 }
